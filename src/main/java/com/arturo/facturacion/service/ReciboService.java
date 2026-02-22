@@ -7,4 +7,5 @@ import java.math.BigDecimal;
 
 public interface ReciboService {
     Recibo emitirRecibo(Long clienteId, Long servicioId, BigDecimal montoBruto);
+    Recibo obtenerReciboPorId(Long id);
 }

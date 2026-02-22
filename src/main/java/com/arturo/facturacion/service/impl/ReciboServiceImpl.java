@@ -53,4 +53,10 @@ public class ReciboServiceImpl implements ReciboService {
 
         return reciboRepository.save(nuevoRecibo);
     }
+
+    @Override
+    public Recibo obtenerReciboPorId(Long id) {
+        return reciboRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Error: Recibo no encontrado"));
+    }
 }
