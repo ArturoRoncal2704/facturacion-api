@@ -4,7 +4,6 @@ import com.arturo.facturacion.dto.ClienteRequest;
 import com.arturo.facturacion.entity.Cliente;
 import com.arturo.facturacion.service.ClienteService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
