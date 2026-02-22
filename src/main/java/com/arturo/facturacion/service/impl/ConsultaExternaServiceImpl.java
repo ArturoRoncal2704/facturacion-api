@@ -19,11 +19,20 @@ public class ConsultaExternaServiceImpl implements ConsultaExternaService {
 
     @Override
     public ReniecResponse consultarDni(String dni) {
-        return restTemplate.getForObject(URL_DNI + dni, ReniecResponse.class);
+        try {
+            return restTemplate.getForObject(URL_DNI + dni, ReniecResponse.class);
+
+        }catch (Exception e){
+            throw new RuntimeException("El DNI " + dni + " no existe o la API de la RENIEC está caída.");
+        }
     }
 
     @Override
     public SunatResponse consultarRuc(String ruc) {
-        return restTemplate.getForObject(URL_RUC + ruc, SunatResponse.class);
+        try{
+            return restTemplate.getForObject(URL_RUC + ruc, SunatResponse.class);
+        }catch (Exception e){
+            throw new RuntimeException("El RUC " + ruc + " no existe o la API de la SUNAT está caída.");
+        }
     }
 }
