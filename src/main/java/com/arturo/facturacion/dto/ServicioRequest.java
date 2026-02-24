@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServicioRequest {
+    private String nombre;
     private String descripcion;
-    private BigDecimal precioBase;
 }

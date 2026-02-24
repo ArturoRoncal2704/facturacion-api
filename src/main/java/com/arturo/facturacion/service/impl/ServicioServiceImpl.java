@@ -18,8 +18,8 @@ public class ServicioServiceImpl implements ServicioService {
     @Override
     public Servicio registrarServicio(ServicioRequest request) {
         Servicio nuevoServicio = new Servicio();
+        nuevoServicio.setNombre(request.getNombre());
         nuevoServicio.setDescripcion(request.getDescripcion());
-        nuevoServicio.setPrecioBase(request.getPrecioBase());
 
         return servicioRepository.save(nuevoServicio);
     }

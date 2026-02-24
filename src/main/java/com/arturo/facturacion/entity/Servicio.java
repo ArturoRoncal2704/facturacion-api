@@ -21,8 +21,8 @@ public class Servicio {
     private Long id;
 
     @Column(nullable = false)
+    private String nombre;
+
     private String descripcion;
 
-    @Column(name = "precio_base", nullable = false)
-    private BigDecimal precioBase;
 }
