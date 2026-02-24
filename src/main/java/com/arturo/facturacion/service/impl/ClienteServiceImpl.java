@@ -48,4 +48,9 @@ public class ClienteServiceImpl implements ClienteService {
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
+
+    @Override
+    public void eliminarCliente(Long id) {
+        clienteRepository.deleteById(id);
+    }
 }
