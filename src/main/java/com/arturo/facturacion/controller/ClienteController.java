@@ -29,4 +29,10 @@ public class ClienteController {
         List<Cliente> clientes = clienteService.listarClientes();
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarCliente(@PathVariable Long id) {
+        clienteService.eliminarCliente(id);
+        return ResponseEntity.noContent().build();
+    }
 }

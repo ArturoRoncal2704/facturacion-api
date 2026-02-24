@@ -8,4 +8,5 @@ import java.util.List;
 public interface ClienteService {
     Cliente registrarCliente(ClienteRequest request);
     List<Cliente> listarClientes();
+    void eliminarCliente(Long id);
 }
