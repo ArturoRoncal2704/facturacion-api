@@ -1,49 +1,59 @@
-# 🚀 CarhPay - Frontend de Emisión de Recibos
+# ⚙️ CarhPay - API RESTful Backend
 
 ![Estado](https://img.shields.io/badge/Estado-En_Desarrollo-green)
-![React](https://img.shields.io/badge/Frontend-React_Vite-61DAFB?logo=react)
-![Tailwind CSS](https://img.shields.io/badge/Estilos-Tailwind_CSS-38B2AC?logo=tailwind-css)
+![Java](https://img.shields.io/badge/Backend-Java_Spring_Boot-007396?logo=java)
+![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql)
 
 ## 📌 Descripción del Proyecto
-Este repositorio contiene el cliente web de **CarhPay**, una plataforma moderna para la gestión de clientes, catálogo de servicios y la emisión automatizada de recibos por honorarios electrónicos. Construido con React, está diseñado para ofrecer una experiencia de usuario (UX) fluida, intuitiva y altamente responsiva.
+Este repositorio contiene el núcleo de lógica de negocio (Backend) de **CarhPay**. Es una API RESTful construida con Spring Boot que gestiona de manera segura la base de datos de clientes, el catálogo de servicios, las reglas de negocio y el motor de generación dinámica de recibos en formato PDF.
 
 ## ✨ Características Principales
-* **Diseño Responsivo y Moderno:** Interfaz construida con Tailwind CSS, con soporte nativo para **Modo Oscuro / Claro**.
-* **Búsqueda Inteligente:** Filtros dinámicos (Typeahead) para seleccionar rápidamente clientes y servicios sin recargar la página.
-* **UX Avanzada:** Integración de `SweetAlert2` para notificaciones interactivas, alertas de éxito y prevención de acciones destructivas (como el borrado accidental).
-* **Consumo de API REST:** Sincronización asíncrona mediante `fetch` para operaciones CRUD y descarga directa de archivos binarios (PDFs).
+* **Arquitectura de Capas Limpia:** Separación estricta de responsabilidades usando Controladores, Servicios y Repositorios (Principios SOLID).
+* **Patrón DTO (Data Transfer Object):** Desacoplamiento de las entidades de base de datos (`Cliente`, `Servicio`, `Recibo`) de las peticiones HTTP, garantizando seguridad y código limpio.
+* **Motor de Generación PDF:** Integración con `OpenPDF` para crear recibos por honorarios electrónicos al vuelo. El diseño utiliza estructuras de grillas (tables) para alinear los datos de forma profesional.
+* **Integridad Relacional y Reglas de Negocio:** Manejo estricto de restricciones de base de datos (`DataIntegrityViolationException`) para proteger el historial financiero.
+* **CORS Configurado:** Listo para comunicarse de forma segura con aplicaciones cliente modernas.
 
 ## 🛠️ Stack Tecnológico
-* **Core:** React 18 + Vite
-* **Estilos:** Tailwind CSS
-* **Iconografía:** Heroicons (Solid 24)
-* **Alertas:** SweetAlert2
+* **Lenguaje & Framework:** Java 17+ y Spring Boot 3
+* **Persistencia:** Spring Data JPA / Hibernate
+* **Base de Datos:** MySQL
+* **Generación de Documentos:** OpenPDF
+* **Herramientas:** Lombok (Reducción de código repetitivo)
 
 ## 🚀 Instalación y Despliegue
 
 ### Requisitos Previos
-* Node.js (v16 o superior)
-* npm o yarn
-* Tener el [Backend de CarhPay](https://github.com/ArturoRoncal2704/facturacion-api) corriendo localmente en el puerto 8080.
+* Java Development Kit (JDK) 17 o superior.
+* MySQL Server ejecutándose en el puerto 3306.
+* Maven.
 
 ### Pasos para ejecutar
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/ArturoRoncal2704/facturacion-frontend.git
+   git clone [https://github.com/ArturoRoncal2704/facturacion-api.git](https://github.com/ArturoRoncal2704/facturacion-api.git)
    ```
-2. Instalar las dependencias:
+2. Configurar la Base de Datos:
    ```bash
-   npm install
+   Crea una base de datos en MySQL llamada facturacion_db.
    ```
-3. Levantar el servidor de desarrollo:
-    ```bash
-    npm run dev
-    ```
-4. Abrir en el navegador: http://localhost:5174 (o el puerto que indique la consola).
+3. Actualizar credenciales:
+   ```bash
+   Asegúrate de que el archivo src/main/resources/application.properties tenga tu usuario y contraseña de MySQL.
+   spring.datasource.url=jdbc:mysql://localhost:3306/facturacion_db
+   spring.datasource.username=tu_usuario
+   spring.datasource.password=tu_contraseña
+   ```
+4. Compilar y ejecutar (Hibernate creará las tablas automáticamente):
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+5. La API estará disponible en http://localhost:8080/api/.
 
-📸 Capturas de Pantalla
+## 📄 Formato del PDF Generado
+El motor interno exporta un PDF estructurado con los datos del profesional, el cliente, concepto del servicio, cálculos de retenciones (8%) y montos netos/brutos de manera automática.
 
-👨‍💻 Autor
+## 👨‍💻 Autor
 Carlos Arturo Roncal Hermenegildo
 * Desarrollador de Software
 * [![GitHub](https://img.shields.io/badge/GitHub-ArturoRoncal2704-181717?style=flat&logo=github)](https://github.com/ArturoRoncal2704)
